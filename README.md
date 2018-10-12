@@ -36,6 +36,9 @@ Operadores de logica difusa:
 *Implica Mamdani
 
 *Implica Godel
+
+# VIDEO!!!
+-> -> https://youtu.be/j-Ix2E65woE
   
 # CÓMO FUNCIONA?
 1. El proyecto despliega una interfaz grafica, en donde es posible elegir alguna de las funciones de pertenecia a la vez.
@@ -59,4 +62,4 @@ En la terminal de processing, se pueden ver los valores exactos para cada punto 
 La función que se modela, presenta una función discreta. PERO LAS FUNCIONES DE PERTENENCIA SON FUNCIONES CONTINUAS.
 Solo que por motivos de modelación, se presentan valores enteros para graficar.
 
-Cuidar que no se cumpla la división sobre 0.
+Regresa -1 para evitar errores por división sobre 0.
