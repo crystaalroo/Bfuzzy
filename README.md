@@ -3,37 +3,37 @@
 Biblioteca realizada para la clase de Inteligencia Artificial I. 
 Permite obtener los resultados para un U dado de las funciones de pertenencia:
 
-Función de Trapecio abierto Derecho
+*Función de Trapecio abierto Derecho
 
-Función de Trapecio abierto Izquierdo
+*Función de Trapecio abierto Izquierdo
 
-Función Triangular
+*Función Triangular
 
-Función Trapezoidal
+*Función Trapezoidal
 
-Función curva S
+*Función curva S
 
-Función curva Z
+*Función curva Z
 
-Función triangular suave
+*Función triangular suave
 
-Función trapezoidal suave
+*Función trapezoidal suave
   
 Operadores de logica difusa:
 
-Minimo
+*Minimo
 
-Maximo
+*Maximo
 
-AND
+*AND
 
-OR
+*OR
 
-NOT
+*NOT
 
-Implica Zadeh
+*Implica Zadeh
 
-Implica Mamdani
+*Implica Mamdani
 
-Implica Godel
+*Implica Godel
   
