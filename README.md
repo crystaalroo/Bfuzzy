@@ -51,3 +51,11 @@ Operadores de logica difusa:
 6. Se grafican los resultados de la función elegida.
 
 7. Si presionas en "limpiar", se reinicia el proceso.
+
+# IMPORTANTE!!
+
+En la terminal de processing, se pueden ver los valores exactos para cada punto del [0,100].
+
+La función que se modela, presenta una función discreta. PERO LAS FUNCIONES DE PERTENENCIA SON FUNCIONES CONTINUAS.
+Solo que por motivos de modelación, se presentan valores enteros para graficar.
+
