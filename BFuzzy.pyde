@@ -1,12 +1,15 @@
 import BFuzzy
-R_MIN=-30
-R_MAX=50
-A=4.0
-B=7.0
-C=9.0
-D=11.0
+R_MIN=0
+R_MAX=100
+A=11.0
+B=29.0
+C=69.0
+D=41.0
 fuzzy=BFuzzy.Bfuzzy(A,B,C,D)
-
+limpio=True
+dibujar=False
+lista=[[None,None]]
+iter=1
 
 def setup():
     size(1401,1500)
@@ -16,6 +19,8 @@ def drawCanvas():
     fill(0,210,160)
     stroke(0,210,160)
     rect(400,0,1100,1500) #CANVAS
+    stroke(0,0,0)
+    rect(1100,800,220,50,20)
     fill(255,255,255)
     stroke(255,255,255)
     rect(0,0,400,1500)#JUEGO
@@ -44,12 +49,26 @@ def drawCanvas():
     text("Curva Z",110,625)
     text("Triangular suave",110,725)
     text("Trapezoidal suave",110, 825)
+    text("Limpiar",1120,820)
     
 def draw():
-    p=False
+    global limpio,dibujar,iter,lista
+    if not limpio and dibujar:
+        fill(200,0,125)
+        stroke(200,0,125)
+        if iter!=len(lista):
+            ellipse(500+(8*lista[iter][0]),500-(400*lista[iter][1]),2,2)
+            print(lista[iter])
+            iter+=1
+        else:
+            dibujar=False
+            iter=1
+        
 
 def mousePressed():
-    if mouseX>=100 and mouseX<=320:
+    global limpio
+    if mouseX>=100 and mouseX<=320 and limpio:
+        limpio=False
         if mouseY>=100 and mouseY<=150:
             TAI()
         if mouseY>=200 and mouseY<=250:
@@ -66,52 +85,107 @@ def mousePressed():
             TRIAN_SUAVE()
         if mouseY>=800 and mouseY<=850:
             TRAPE_SUAVE()
+        
+    if mouseX>=1100 and mouseX<=1320 and mouseY>=800 and mouseY<=850:
+        LIMPIAR()
             
 def TAI():
-    global R_MIN, R_MAX
+    global R_MIN, R_MAX,limpio,lista,dibujar,fuzzy
+    plano()
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.trapecio_abierto_der(i))
+        lista.append([i,fuzzy.trapecio_abierto_izq(i)])
+    limpio=False
+    dibujar=True
+    
     
 def TAD():
-    global R_MIN, R_MAX, fuzzy
+    global R_MIN, R_MAX, fuzzy, limpio,lista,dibujar
+    plano()
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.trapecio_abierto_izq(i))
+        lista.append([i,fuzzy.trapecio_abierto_der(i)])
+    limpio=False
+    dibujar=True
         
 def TRIAN():
-    global R_MIN, R_MAX, fuzzy
+    global R_MIN, R_MAX, fuzzy, limpio,lista,dibujar
+    plano()
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.triangular(i))
+        lista.append([i,fuzzy.triangular(i)])
+    limpio=False
+    dibujar=True
         
 def TRAPEZ():
-    global R_MIN, R_MAX, fuzzy
+    plano()
+    global R_MIN, R_MAX, fuzzy, limpio,lista,dibujar
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.trapezoidal(i))
+        lista.append([i,fuzzy.trapezoidal(i)])
+    limpio=False
+    dibujar=True
         
 def CURVA_S():
-    global R_MIN, R_MAX, fuzzy 
+    plano()
+    global R_MIN, R_MAX, fuzzy, limpio,lista,dibujar
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.curva_S(i))
+        lista.append([i,fuzzy.curva_S(i)])
+    limpio=False
+    dibujar=True
      
 def CURVA_Z():
-    global R_MIN, R_MAX,fuzzy
+    plano()
+    global R_MIN, R_MAX,fuzzy, limpio,lista,dibujar
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.curva_Z(i))
+        lista.append([i,fuzzy.curva_Z(i)])
+    limpio=False
+    dibujar=True
           
 def TRIAN_SUAVE():
-    global R_MIN, R_MAX,fuzzy
+    plano()
+    global R_MIN, R_MAX,fuzzy, limpio,lista,dibujar
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.triangular_suave(i))
+        lista.append([i,fuzzy.triangular_suave(i)])
+    limpio=False
+    dibujar=True
      
 def TRAPE_SUAVE():
-    global R_MIN, R_MAX,fuzzy
+    plano()
+    global R_MIN, R_MAX,fuzzy,limpio,lista,dibujar
     for i in range(R_MIN,R_MAX+1):
         i=float(i)
-        print(fuzzy.trapezoidal_suave(i))
+        lista.append([i,fuzzy.trapezoidal_suave(i)])
+    limpio=False
+    dibujar=True
     
+def LIMPIAR():
+    global A,B,C,D,limpio
+    A=random(100)
+    B=random(100)
+    C=random(100)
+    D=random(100)
+    fuzzy.set_valores(A,B,C,D)
+    drawCanvas()
+    limpio=True
+    
+def plano():
+    global lista,A,B,C,D
+    lista=[[None,None]]
+    f=createFont("AmericanTypewriter",10)
+    textFont(f)
+    line(500,500,1300,500)
+    line(500,500,500,100)
+    for i in range(0,21):
+        text(str(i*5),500+(40*i),520)
+    for i in range(0,21):
+        text(str(i*.05),480,500-(20*i))
+    fill(255,0,0)
+    stroke(255,0,0)
+    text("A",500+(8*A),540)
+    text("B",500+(8*B),540)
+    text("C",500+(8*C),540)
+    text("D",500+(8*D),540)
