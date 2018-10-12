@@ -38,7 +38,7 @@ Operadores de logica difusa:
 *Implica Godel
   
 # CÓMO FUNCIONA?
-1.El proyecto despliega una interfaz grafica, en donde es posible elegir alguna de las funciones de pertenecia a la vez.
+1. El proyecto despliega una interfaz grafica, en donde es posible elegir alguna de las funciones de pertenecia a la vez.
 
 2. Una vez que se seleccióna, el programa selecciona 4 variables random.
 
