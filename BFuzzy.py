@@ -12,6 +12,7 @@ class Bfuzzy:
         l.sort()
         self.a=l[0]
         self.b=l[1]
+        if self.a==self.b: return -1
         if u>self.b: return 1.0
         if u<self.a: return 0.0
         if self.a<=u and u<=self.b: return (u-self.a)/(self.b-self.a)
@@ -21,6 +22,7 @@ class Bfuzzy:
         l.sort()
         self.a=l[0]
         self.b=l[1]
+        if self.a==self.b: return -1
         if u>self.b: return 0.0
         if u<self.a: return 1.0
         if self.a<=u and u<=self.b: return (self.b-u)/(self.b-self.a)
@@ -31,6 +33,8 @@ class Bfuzzy:
         self.a=l[0]
         self.b=l[1]
         self.c=l[2]
+        if self.a==self.b: return -1
+        if self.c==self.d: return -1
         if u<self.a or u>self.c: return 0.0
         if self.a<=u and u<self.b: return (u-self.a)/(self.b-self.a)
         if self.b<=u and u<=self.c: return (self.c-u)/(self.c-self.b)
@@ -42,6 +46,8 @@ class Bfuzzy:
         self.b=l[1]
         self.c=l[2]
         self.d=l[3]
+        if self.a==self.b:return -1
+        if self.d==self.c: return -1
         if u<self.a or u>self.d: return 0.0
         if self.b<=u and u<=self.c: return 1.0
         if self.a<=u and u<self.b: return (u-self.a)/(self.b-self.a)
