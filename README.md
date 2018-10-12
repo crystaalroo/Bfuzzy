@@ -59,3 +59,4 @@ En la terminal de processing, se pueden ver los valores exactos para cada punto 
 La función que se modela, presenta una función discreta. PERO LAS FUNCIONES DE PERTENENCIA SON FUNCIONES CONTINUAS.
 Solo que por motivos de modelación, se presentan valores enteros para graficar.
 
+Cuidar que no se cumpla la división sobre 0.
